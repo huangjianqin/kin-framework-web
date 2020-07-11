@@ -33,11 +33,11 @@ public abstract class PermissionInterceptor extends HandlerInterceptorAdapter {
 
         if (needLogin) {
             //检查权限
-            customCheckLogin(request, response, needAdmin);
+            return customCheckLogin(request, response, needAdmin);
         }
 
         return super.preHandle(request, response, handler);
     }
 
-    public abstract void customCheckLogin(HttpServletRequest request, HttpServletResponse response, boolean needAdmin);
+    public abstract boolean customCheckLogin(HttpServletRequest request, HttpServletResponse response, boolean needAdmin);
 }
