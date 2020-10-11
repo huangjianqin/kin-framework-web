@@ -19,6 +19,9 @@
         <kin-framework.version>0.1.0.0</kin-framework.version>
         <springboot.version>2.1.6.RELEASE</springboot.version>
         <jackson.version>2.10.1</jackson.version>
+        <knife4j.version>2.0.4</knife4j.version>
+        <logstash-logback.version>5.3</logstash-logback.version>
+        <hutool.version>5.4.0</hutool.version>
     </properties>
 
     <dependencyManagement>
@@ -44,15 +47,26 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <!-- 打war时移除tomcat依赖 -->
-            <!--            <exclusions>-->
-            <!--                <exclusion>-->
-            <!--                    <groupId>org.springframework.boot</groupId>-->
-            <!--                    <artifactId>spring-boot-starter-tomcat</artifactId>-->
-            <!--                </exclusion>-->
-            <!--            </exclusions>-->
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+        <!-- logback logstash elasticsearch -->
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>${logstash-logback.version}</version>
+        </dependency>
+
+        <!-- swagger api文档工具 -->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-micro-spring-boot-starter</artifactId>
+            <version>${knife4j.version}</version>
+        </dependency>
 
     </dependencies>
 
