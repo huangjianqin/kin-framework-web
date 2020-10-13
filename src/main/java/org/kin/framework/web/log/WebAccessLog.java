@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class WebAccessLog {
     /**
-     * 操作描述
+     * 可通过操作描述, 可以通过swagger等等api文档支持
      */
     private String description;
 

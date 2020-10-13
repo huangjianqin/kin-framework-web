@@ -1,6 +1,5 @@
 package org.kin.framework.web.log;
 
-import io.swagger.annotations.ApiOperation;
 import net.logstash.logback.marker.Markers;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -59,11 +58,7 @@ public class WebAccessLogAspect implements LoggerOprs {
             Signature signature = joinPoint.getSignature();
             MethodSignature methodSignature = (MethodSignature) signature;
             Method method = methodSignature.getMethod();
-            //支持swagger的, 把swagger信息也打印
-            if (method.isAnnotationPresent(ApiOperation.class)) {
-                ApiOperation apiOperation = method.getAnnotation(ApiOperation.class);
-                accessLog.setDescription(apiOperation.value());
-            }
+
             long endTime = System.currentTimeMillis();
             String urlStr = request.getRequestURL().toString();
 
