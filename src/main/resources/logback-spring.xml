@@ -8,6 +8,8 @@
     <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
     <!--应用名称-->
     <springProperty scope="context" name="APP_NAME" source="spring.application.name" defaultValue="springBoot"/>
+    <!--项目名称-->
+    <springProperty scope="context" name="PROJECT_NAME" source="kin.web.project" defaultValue="springBoot"/>
     <!--日志文件保存路径, 不断从${LOG_FILE},${LOG_PATH},${LOG_TEMP}寻找可用目录, 最后回退到java.io.tmpdir, 即/tmp-->
     <property name="LOG_FILE_PATH" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}}/logs}"/>
 
@@ -75,7 +77,7 @@
                 <pattern>
                     <pattern>
                         {
-                        "project": "kin-framework-web",
+                        "project": "${PROJECT_NAME}",
                         "level": "%level",
                         "service": "${APP_NAME:-}",
                         "pid": "${PID:-}",
@@ -113,7 +115,7 @@
                 <pattern>
                     <pattern>
                         {
-                        "project": "kin-framework-web",
+                        "project": "${PROJECT_NAME}",
                         "level": "%level",
                         "service": "${APP_NAME:-}",
                         "pid": "${PID:-}",
@@ -146,7 +148,7 @@
                 <pattern>
                     <pattern>
                         {
-                        "project": "kin-framework-web",
+                        "project": "${PROJECT_NAME}",
                         "level": "%level",
                         "service": "${APP_NAME:-}",
                         "pid": "${PID:-}",
@@ -179,7 +181,7 @@
                 <pattern>
                     <pattern>
                         {
-                        "project": "kin-framework-web",
+                        "project": "${PROJECT_NAME}",
                         "level": "%level",
                         "service": "${APP_NAME:-}",
                         "class": "%logger",
