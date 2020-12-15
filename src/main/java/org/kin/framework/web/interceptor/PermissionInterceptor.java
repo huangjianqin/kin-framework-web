@@ -43,5 +43,8 @@ public abstract class PermissionInterceptor extends HandlerInterceptorAdapter {
         return super.preHandle(request, response, handler);
     }
 
+    /**
+     * 检查用户是否已登录 | 已登录用户是否满足权限要求
+     */
     public abstract boolean customCheckLogin(HttpServletRequest request, HttpServletResponse response, boolean needAdmin);
 }
