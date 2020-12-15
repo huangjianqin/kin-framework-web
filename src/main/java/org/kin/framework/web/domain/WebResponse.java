@@ -22,7 +22,7 @@ public class WebResponse<T> implements Serializable {
     private T content;
 
     public static <T> WebResponse<T> of(int code, String msg, T content) {
-        WebResponse webResponse = new WebResponse<>();
+        WebResponse<T> webResponse = new WebResponse<>();
         webResponse.code = code;
         webResponse.msg = msg;
         webResponse.content = content;
