@@ -11,7 +11,6 @@ import org.kin.framework.utils.JSON;
 import org.kin.framework.utils.StringUtils;
 import org.kin.framework.utils.Urls;
 import org.springframework.core.annotation.Order;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -23,11 +22,12 @@ import java.lang.reflect.Parameter;
 import java.util.*;
 
 /**
+ * 针对带controller package下的bean所有public方法(http接口)进行切面, 打印access log
+ *
  * @author huangjianqin
  * @date 2020/10/11
  */
 @Aspect
-@Component
 @Order(1)
 public class WebAccessLogAspect implements LoggerOprs {
     @Pointcut("execution(public * *.controller.*.*(..))")
@@ -39,7 +39,7 @@ public class WebAccessLogAspect implements LoggerOprs {
     }
 
     @AfterReturning(value = "logWebAccess()", returning = "ret")
-    public void doAfterReturning(Object ret) {
+    public void doAfter(Object ret) {
     }
 
     @Around("logWebAccess()")
@@ -72,7 +72,7 @@ public class WebAccessLogAspect implements LoggerOprs {
             accessLog.setUri(request.getRequestURI());
             accessLog.setUrl(request.getRequestURL().toString());
             //logback日志打印内容可以引用的参数${XXX}
-            Map<String, Object> logMap = new HashMap<>();
+            Map<String, Object> logMap = new HashMap<>(8);
             logMap.put("url", accessLog.getUrl());
             logMap.put("method", accessLog.getMethod());
             logMap.put("params", accessLog.getParams());
@@ -94,16 +94,16 @@ public class WebAccessLogAspect implements LoggerOprs {
         Parameter[] params = method.getParameters();
 
         int argsCounter = 0;
-        for (int i = 0; i < params.length; i++) {
+        for (Parameter param : params) {
             //将RequestBody注解修饰的参数作为请求参数
-            RequestBody requestBody = params[i].getAnnotation(RequestBody.class);
+            RequestBody requestBody = param.getAnnotation(RequestBody.class);
             if (requestBody != null) {
                 argList.add(args[argsCounter++]);
             }
             //将RequestParam注解修饰的参数作为请求参数
-            RequestParam requestParam = params[i].getAnnotation(RequestParam.class);
+            RequestParam requestParam = param.getAnnotation(RequestParam.class);
             if (requestParam != null) {
-                String key = params[i].getName();
+                String key = param.getName();
                 if (!StringUtils.isBlank(requestParam.value())) {
                     key = requestParam.value();
                 }

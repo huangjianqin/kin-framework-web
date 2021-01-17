@@ -9,59 +9,27 @@ import java.util.List;
  * @date 2020/10/11
  */
 public class WebAccessLog {
-    /**
-     * 可通过操作描述, 可以通过swagger等等api文档支持
-     */
+    /** 操作描述 */
     private String description;
-
-    /**
-     * 操作用户
-     */
+    /** 操作用户 */
     private String username;
-
-    /**
-     * 操作时间
-     */
+    /** 操作时间 */
     private long startTime;
-
-    /**
-     * 消耗时间
-     */
+    /** 消耗时间 */
     private long costTime;
-
-    /**
-     * 根路径
-     */
+    /** 根路径 */
     private String basePath;
-
-    /**
-     * URI
-     */
+    /** URI */
     private String uri;
-
-    /**
-     * URL
-     */
+    /** URL */
     private String url;
-
-    /**
-     * 请求类型, get post等等
-     */
+    /** 请求类型, get post等等 */
     private String method;
-
-    /**
-     * IP地址
-     */
+    /** IP地址 */
     private String ip;
-
-    /**
-     * 请求参数
-     */
+    /** 请求参数 */
     private List<Object> params;
-
-    /**
-     * 返回结果
-     */
+    /** 返回结果 */
     private Object result;
 
     public static WebAccessLog of(String description, String username, long startTime, long costTime, String basePath, String uri, String url, String method, String ip, List<Object> params, Object result) {

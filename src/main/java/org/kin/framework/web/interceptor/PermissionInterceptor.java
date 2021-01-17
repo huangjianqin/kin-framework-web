@@ -4,6 +4,7 @@ import org.kin.framework.web.domain.Permission;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import javax.annotation.Nonnull;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,7 +16,10 @@ import javax.servlet.http.HttpServletResponse;
  */
 public abstract class PermissionInterceptor extends HandlerInterceptorAdapter {
     @Override
-    public final boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public final boolean preHandle(
+            @Nonnull HttpServletRequest request,
+            @Nonnull HttpServletResponse response,
+            @Nonnull Object handler) throws Exception {
         //判断是否是方法处理
         if (!(handler instanceof HandlerMethod)) {
             return super.preHandle(request, response, handler);
@@ -39,5 +43,8 @@ public abstract class PermissionInterceptor extends HandlerInterceptorAdapter {
         return super.preHandle(request, response, handler);
     }
 
+    /**
+     * 检查用户是否已登录 | 已登录用户是否满足权限要求
+     */
     public abstract boolean customCheckLogin(HttpServletRequest request, HttpServletResponse response, boolean needAdmin);
 }
