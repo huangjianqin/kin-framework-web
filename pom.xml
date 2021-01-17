@@ -17,7 +17,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <kin-framework.version>0.1.0.0</kin-framework.version>
-        <springboot.version>2.1.6.RELEASE</springboot.version>
+        <springboot.version>2.3.1.RELEASE</springboot.version>
         <jackson.version>2.10.1</jackson.version>
         <knife4j.version>2.0.4</knife4j.version>
         <logstash-logback.version>5.3</logstash-logback.version>
