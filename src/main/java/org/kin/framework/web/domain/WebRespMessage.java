@@ -1,4 +1,4 @@
-package org.kin.framework.web.exception;
+package org.kin.framework.web.domain;
 
 /**
  * response 响应码+描述

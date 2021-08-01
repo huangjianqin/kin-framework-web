@@ -2,7 +2,7 @@ package org.kin.framework.web.interceptor;
 
 import org.kin.framework.web.domain.Permission;
 import org.springframework.web.method.HandlerMethod;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.servlet.AsyncHandlerInterceptor;
 
 import javax.annotation.Nonnull;
 import javax.servlet.http.HttpServletRequest;
@@ -14,15 +14,16 @@ import javax.servlet.http.HttpServletResponse;
  * @author huangjianqin
  * @date 2019/7/26
  */
-public abstract class PermissionInterceptor extends HandlerInterceptorAdapter {
+public abstract class PermissionInterceptor implements AsyncHandlerInterceptor {
     @Override
     public final boolean preHandle(
             @Nonnull HttpServletRequest request,
             @Nonnull HttpServletResponse response,
-            @Nonnull Object handler) throws Exception {
-        //判断是否是方法处理
+            @Nonnull Object handler) {
+        //判断是否是方法
         if (!(handler instanceof HandlerMethod)) {
-            return super.preHandle(request, response, handler);
+            //override
+            return true;
         }
 
         //获取权限限制
@@ -40,7 +41,8 @@ public abstract class PermissionInterceptor extends HandlerInterceptorAdapter {
             return customCheckLogin(request, response, needAdmin);
         }
 
-        return super.preHandle(request, response, handler);
+        //override
+        return true;
     }
 
     /**

@@ -1,5 +1,7 @@
 package org.kin.framework.web.exception;
 
+import org.kin.framework.web.domain.WebRespMessage;
+
 /**
  * web异常统一处理
  *

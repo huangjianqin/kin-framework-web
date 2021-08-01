@@ -1,8 +1,5 @@
 package org.kin.framework.web.domain;
 
-import org.kin.framework.web.exception.CommonWebRespMessage;
-import org.kin.framework.web.exception.WebRespMessage;
-
 import java.io.Serializable;
 
 /**
@@ -29,28 +26,24 @@ public class WebResponse<T> implements Serializable {
         return webResponse;
     }
 
-    public static <T> WebResponse<T> of(WebRespMessage respMessage, T content) {
-        WebResponse webResponse = new WebResponse<>();
-        webResponse.code = respMessage.code();
-        webResponse.msg = respMessage.message();
-        webResponse.content = content;
-        return webResponse;
+    public static <T> WebResponse<T> of(int code, String msg) {
+        return WebResponse.of(code, msg, null);
     }
 
-    public static <T> WebResponse<T> success(String msg, T content) {
-        return WebResponse.of(CommonWebRespMessage.SUCCESS.code(), msg, content);
+    public static <T> WebResponse<T> of(WebRespMessage respMessage, T content) {
+        return WebResponse.of(respMessage.code(), respMessage.message(), content);
+    }
+
+    public static <T> WebResponse<T> of(WebRespMessage respMessage) {
+        return WebResponse.of(respMessage.code(), respMessage.message(), null);
     }
 
     public static <T> WebResponse<T> success(T content) {
-        return success("", content);
+        return WebResponse.of(CommonWebRespMessage.SUCCESS.code(), "", content);
     }
 
     public static <T> WebResponse<T> success() {
-        return success("", null);
-    }
-
-    public static <T> WebResponse<T> fail(int code, String msg) {
-        return WebResponse.of(code, msg, null);
+        return success(null);
     }
 
     public static <T> WebResponse<T> fail(String msg) {
@@ -61,6 +54,17 @@ public class WebResponse<T> implements Serializable {
         return WebResponse.of(webRespMessage, null);
     }
 
+    public static WebResponse<String> forbidden(String content) {
+        return WebResponse.of(CommonWebRespMessage.FORBIDDEN, content);
+    }
+
+    public static WebResponse<String> unauthorized(String content) {
+        return WebResponse.of(CommonWebRespMessage.UNAUTHORIZED, content);
+    }
+
+    public static <T> WebResponse<T> validateFail(String content) {
+        return WebResponse.of(CommonWebRespMessage.VALIDATE_FAILED.code(), content);
+    }
     //------------------------------------------------------------------------------------------------------
 
     public int getCode() {

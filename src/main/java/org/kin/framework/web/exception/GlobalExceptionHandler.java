@@ -1,5 +1,6 @@
 package org.kin.framework.web.exception;
 
+import org.kin.framework.web.domain.WebRespMessage;
 import org.kin.framework.web.domain.WebResponse;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
@@ -45,7 +46,7 @@ public class GlobalExceptionHandler {
                 message = fieldError.getField() + fieldError.getDefaultMessage();
             }
         }
-        return WebResponse.fail(CommonWebRespMessage.VALIDATE_FAILED.code(), message);
+        return WebResponse.validateFail(message);
     }
 
     /**
@@ -62,6 +63,6 @@ public class GlobalExceptionHandler {
                 message = fieldError.getField() + fieldError.getDefaultMessage();
             }
         }
-        return WebResponse.fail(CommonWebRespMessage.VALIDATE_FAILED.code(), message);
+        return WebResponse.validateFail(message);
     }
 }
