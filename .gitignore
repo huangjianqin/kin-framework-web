@@ -2,3 +2,6 @@
 **/*.iml
 **/target/*
 **/*.docx
+**/*.DS_Store
+logs/*
+**/**/.flattened-pom.xml
