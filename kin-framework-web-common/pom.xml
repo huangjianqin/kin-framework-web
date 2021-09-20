@@ -15,7 +15,6 @@
         <dependency>
             <groupId>org.kin</groupId>
             <artifactId>kin-framework-java</artifactId>
-            <version>${kin-framework.version}</version>
         </dependency>
 
         <!-- starter-web：spring-webmvc + autoconfigure + logback + yaml + tomcat -->
@@ -35,7 +34,6 @@
         <dependency>
             <groupId>net.logstash.logback</groupId>
             <artifactId>logstash-logback-encoder</artifactId>
-            <version>${logstash-logback.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
