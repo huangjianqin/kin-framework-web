@@ -13,7 +13,7 @@
         <kin-framework-java.version>0.1.0.0</kin-framework-java.version>
         <kin-framework-dependencies.version>0.1.0.0</kin-framework-dependencies.version>
 
-        <springboot.version>2.6.6</springboot.version>
+        <springboot.version>2.5.12</springboot.version>
         <spring-cloud-release.version>2020.0.4</spring-cloud-release.version>
         <jackson.version>2.10.1</jackson.version>
         <knife4j.version>2.0.4</knife4j.version>
