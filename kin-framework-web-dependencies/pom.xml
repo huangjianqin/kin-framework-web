@@ -11,6 +11,7 @@
 
     <properties>
         <kin-framework-java.version>0.1.0.0</kin-framework-java.version>
+        <kin-framework-spring.version>0.1.0.0</kin-framework-spring.version>
         <kin-framework-dependencies.version>0.1.0.0</kin-framework-dependencies.version>
 
         <springboot.version>2.5.12</springboot.version>
@@ -72,6 +73,12 @@
                 <groupId>com.nimbusds</groupId>
                 <artifactId>nimbus-jose-jwt</artifactId>
                 <version>${nimbus-jose-jwt.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.kin</groupId>
+                <artifactId>kin-framework-spring</artifactId>
+                <version>${kin-framework-spring.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

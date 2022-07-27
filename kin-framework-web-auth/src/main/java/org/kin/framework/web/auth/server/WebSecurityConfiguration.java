@@ -1,6 +1,6 @@
 package org.kin.framework.web.auth.server;
 
-import org.kin.framework.spring.ConditionOnMissingBean;
+import org.kin.framework.spring.condition.ConditionOnMissingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.context.annotation.Bean;
