@@ -21,7 +21,7 @@
         <logstash-logback.version>5.3</logstash-logback.version>
         <hutool.version>5.4.0</hutool.version>
         <spring-cloud-oauth2.version>2.2.5.RELEASE</spring-cloud-oauth2.version>
-        <nimbus-jose-jwt.version>9.9.2</nimbus-jose-jwt.version>
+        <nimbus-jose-jwt.version>9.37.2</nimbus-jose-jwt.version>
     </properties>
 
     <dependencyManagement>
